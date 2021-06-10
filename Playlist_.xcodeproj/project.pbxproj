@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7117FD9126700926002A21C3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7117FD9026700926002A21C3 /* main.cpp */; };
+		7117FD9C26700945002A21C3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7117FD9A26700945002A21C3 /* main.cpp */; };
+		7117FD9D26700945002A21C3 /* playlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7117FD9B26700945002A21C3 /* playlist.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +24,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7117FD8D26700926002A21C3 /* Playlist_ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Playlist_; sourceTree = BUILT_PRODUCTS_DIR; };
-		7117FD9026700926002A21C3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7117FD9926700944002A21C3 /* playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playlist.h; sourceTree = "<group>"; };
+		7117FD9A26700945002A21C3 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7117FD9B26700945002A21C3 /* playlist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playlist.cpp; sourceTree = "<group>"; };
+		7142C22A267029B200F8BFB7 /* Playlist_ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Playlist_; sourceTree = BUILT_PRODUCTS_DIR; };
+		7142C22B267029CA00F8BFB7 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,22 +46,17 @@
 			isa = PBXGroup;
 			children = (
 				7117FD8F26700926002A21C3 /* Playlist_ */,
-				7117FD8E26700926002A21C3 /* Products */,
+				7142C22A267029B200F8BFB7 /* Playlist_ */,
 			);
-			sourceTree = "<group>";
-		};
-		7117FD8E26700926002A21C3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7117FD8D26700926002A21C3 /* Playlist_ */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		7117FD8F26700926002A21C3 /* Playlist_ */ = {
 			isa = PBXGroup;
 			children = (
-				7117FD9026700926002A21C3 /* main.cpp */,
+				7142C22B267029CA00F8BFB7 /* README.txt */,
+				7117FD9A26700945002A21C3 /* main.cpp */,
+				7117FD9B26700945002A21C3 /* playlist.cpp */,
+				7117FD9926700944002A21C3 /* playlist.h */,
 			);
 			path = Playlist_;
 			sourceTree = "<group>";
@@ -79,7 +78,7 @@
 			);
 			name = Playlist_;
 			productName = Playlist_;
-			productReference = 7117FD8D26700926002A21C3 /* Playlist_ */;
+			productReference = 7142C22A267029B200F8BFB7 /* Playlist_ */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -104,7 +103,7 @@
 				Base,
 			);
 			mainGroup = 7117FD8426700926002A21C3;
-			productRefGroup = 7117FD8E26700926002A21C3 /* Products */;
+			productRefGroup = 7117FD8426700926002A21C3;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -118,7 +117,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7117FD9126700926002A21C3 /* main.cpp in Sources */,
+				7117FD9C26700945002A21C3 /* main.cpp in Sources */,
+				7117FD9D26700945002A21C3 /* playlist.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
