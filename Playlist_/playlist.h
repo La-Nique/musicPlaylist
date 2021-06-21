@@ -10,24 +10,31 @@ Description  : Header file for the Playlist class
 
 struct Song{
 
-    Song(){};
+    Song(){
+        title = "";
+        durationInSeconds = 0;
+    };
 
     Song(std::string assignedTitle){
+        title = assignedTitle;
+        durationInSeconds = 0;
     };
 
     Song(std::string assignedTitle,int songDuration){
+        title = assignedTitle;
+        durationInSeconds = songDuration;
     };
 
     std::string title;
     int durationInSeconds;
 };
 
-struct PlayListNode{
+struct PlayListNode{ // Class Node
     Song* song;
-    PlayListNode* next;
+    PlayListNode* next = nullptr;
 };
 
-class PlayList{
+class PlayList{ // our linkedlist
     public:
 
         /**
@@ -89,6 +96,11 @@ class PlayList{
         * @ return None
         */
         ~PlayList();
+    
+    private:
+        PlayListNode* start = nullptr; //pointer to the starting point.
+        PlayListNode* current = nullptr;
+        int size = 0; //return size of the list
 
 };
 #endif
