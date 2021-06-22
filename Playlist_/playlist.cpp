@@ -108,7 +108,7 @@ int PlayList::getTotalPlayTime() /// Returns the total playtime of each song in 
 PlayList::~PlayList() /// Deconstructor
 {
     PlayListNode* currentNode = start;
-    PlayListNode* nextNode;
+    PlayListNode* nextNode = nullptr;
     while (currentNode != nullptr)
     {
         nextNode = currentNode->next;

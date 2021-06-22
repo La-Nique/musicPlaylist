@@ -8,7 +8,7 @@ Description  : Header file for the Playlist class
 
 #include <string>
 
-struct Song{
+struct Song{ ///initialization
 
     Song(){
         title = "";
@@ -20,7 +20,7 @@ struct Song{
         durationInSeconds = 0;
     };
 
-    Song(std::string assignedTitle,int songDuration){
+    Song(std::string assignedTitle,int songDuration){ ///when this parameterized constructor is called when creating an object, both public data members will be updated
         title = assignedTitle;
         durationInSeconds = songDuration;
     };
@@ -29,12 +29,14 @@ struct Song{
     int durationInSeconds;
 };
 
-struct PlayListNode{ // Class Node
+struct PlayListNode{ //Class "Node"
+    //O <- Node,Circle, Part of Linked List, it contains a song, and a pointer to another circle
     Song* song;
     PlayListNode* next = nullptr;
 };
 
-class PlayList{ // our linkedlist
+class PlayList{ //our linkedlist, the combination of circles
+    //O->O->O->O     <---- This is the linked list
     public:
 
         /**
@@ -100,6 +102,7 @@ class PlayList{ // our linkedlist
     private:
         PlayListNode* start = nullptr; //pointer to the starting point.
         PlayListNode* current = nullptr;
+        PlayListNode* end = nullptr;
         int size = 0; //return size of the list
 
 };
