@@ -27,7 +27,6 @@
 		7117FD9926700944002A21C3 /* playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playlist.h; sourceTree = "<group>"; };
 		7117FD9A26700945002A21C3 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7117FD9B26700945002A21C3 /* playlist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playlist.cpp; sourceTree = "<group>"; };
-		713C42CB267C049600E699F9 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		7142C22A267029B200F8BFB7 /* Playlist_ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Playlist_; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -53,7 +52,6 @@
 		7117FD8F26700926002A21C3 /* Playlist_ */ = {
 			isa = PBXGroup;
 			children = (
-				713C42CB267C049600E699F9 /* README.txt */,
 				7117FD9A26700945002A21C3 /* main.cpp */,
 				7117FD9B26700945002A21C3 /* playlist.cpp */,
 				7117FD9926700944002A21C3 /* playlist.h */,

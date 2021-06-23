@@ -31,8 +31,8 @@ struct Song{ ///initialization
 
 struct PlayListNode{ //Class "Node"
     //O <- Node,Circle, Part of Linked List, it contains a song, and a pointer to another circle
-    Song* song;
-    PlayListNode* next = nullptr;
+    Song* song; //Song data, from our struct
+    PlayListNode* next = nullptr; //playlist node pointer, pointing somewhere
 };
 
 class PlayList{ //our linkedlist, the combination of circles
@@ -98,12 +98,14 @@ class PlayList{ //our linkedlist, the combination of circles
         * @ return None
         */
         ~PlayList();
+        
+        void display(PlayListNode* start);
     
     private:
         PlayListNode* start = nullptr; //pointer to the starting point.
-        PlayListNode* current = nullptr;
         PlayListNode* end = nullptr;
         int size = 0; //return size of the list
+        std::string song_title = "";
 
 };
 #endif
