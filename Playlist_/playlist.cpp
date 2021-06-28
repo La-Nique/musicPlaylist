@@ -7,138 +7,142 @@ Description  : Implementation file for the PlayList class
 #include "playlist.h"
 #include <iostream>
 
-PlayList::PlayList() /// Default Constructor - Should initalize a linkedlist
+PlayList::PlayList() ///Default Constructor - Should initalize a linkedlist, if we are creating a playlist without any songs yet.
 {
     start = nullptr;
     size = 0;
 }
 
-PlayList::PlayList(Song* song) /// Constructor - Should initalize a LinkedList with the given Song
+PlayList::PlayList(Song* song) ///Constructor - Should initalize a LinkedList with the given Song, we are creating a playlist.
 {
-    size = 1;
-    PlayListNode* newNode = new PlayListNode;
-    newNode->song = song;
-    newNode->next = nullptr;
-    start = newNode;
+    size = 1; ///size would only be of size one because we would start off the playlist with one user given song.
+    PlayListNode* newNode = new PlayListNode; /// asking cpu to allocate memory on the heap and assigning it to the pointer called newNode.
+    newNode->song = song; ///newNode start pointer will point to the song.
+    newNode->next = nullptr; ///not required because we intialize in our h file, but good for practice.
+    start = newNode; ///start is our PlaylistNode pointer, start points to the beginning song of the playlist.
 }
 
-PlayListNode* PlayList::insertSong(Song* song, int position)
+PlayListNode* PlayList::insertSong(Song* song, int position) ///we are adding songs to our playlist.
 {
-    PlayListNode* current_node = start;
-    PlayListNode* newNode = new PlayListNode;
-    newNode->song = song;
-    newNode->next = nullptr;
-    //int counter = 0;
+    PlayListNode* insertedSong = new PlayListNode;
+    insertedSong->song = song;
+    insertedSong->next = nullptr; ///not required because we intialize in our h file, but good for practice.
+    PlayListNode* songCurrentLocation = start; ///copies the address of the initial starting node, will be used to traverse the playlist
 
-    if(size == 0) ///when empty linkedlist, insert in front
-    {
-        start = newNode;
-    }
-    else
-    {
-        if (position == 0) ///insert in front, non-empty linkedlist
+        if(size == 0) ///if playlist is empty, insert song in front.
         {
-            newNode->next = start;
-            start = newNode;
+            start = insertedSong;
         }
-        else if (position > size) ///insert in back,
+        else
         {
-            while (current_node->next != nullptr)
+            if (position == 0) ///if song position is 0 but the playlist/linkedlist is not empty, insert the song to the beginning/start of the playlist.
             {
-                current_node = current_node->next;
+                insertedSong->next = start; ///pushes the previous starting song to the next position.
+                start = insertedSong; ///puts the inserted song in the first position.
             }
-            current_node->next = newNode;
+            else if (position > size) ///if the position of the inserted song is at a higher index than the total number of songs.
+            {
+                while (songCurrentLocation->next != nullptr)
+                {
+                    songCurrentLocation = songCurrentLocation->next; ///traversing from start, overlapping start pointer at first, to end through the list while traveling through each song until we get to the last index.
+                }
+                songCurrentLocation->next = insertedSong; ///once we hit the end of the playlist via while loop, we will append the new song to the their position in the end of the playlist.
+            }
+            else ///inserting inbetween nodes within linked list
+            {
+                for (int i = 0; i < position - 1; i++) /// -1 because we travel via ->next.
+                songCurrentLocation = songCurrentLocation->next; ///our "counter++" but for the playlist nodes.
+                
+                insertedSong->next = songCurrentLocation->next; ///copies the actual linker.
+                songCurrentLocation->next = insertedSong; ///song inserted, linker of previous song is now attached to the data of the desired inserted song.
+            }
         }
-        else ///inserting inbetween nodes within linked list
-        {
-            for (int i = 0; i < position - 1; i++)
-                current_node = current_node->next;
-            
-            newNode->next = current_node->next;
-            current_node->next = newNode;
-        }
-    }
-    size++;
-    return newNode;
+    size++; ///increment size of our playlist!
+    
+    return insertedSong;
 }
 
-int PlayList::getSize() /// return Size of playlist
+int PlayList::getSize() /// return size/total number of songs in playlist.
 {
     return size;
 }
 
-PlayListNode* PlayList::searchForSong(std::string title)
+PlayListNode* PlayList::searchForSong(std::string title) ///return the pointer to the song in the playlist.
 {
-    PlayListNode* newNode = start;
-    if (newNode->song->title == title)
-        return newNode;
-    
-    while (newNode->next != nullptr)
-    {
-        newNode = newNode->next;
-        if (newNode->song->title == title)
-            return newNode;
-    }
+    PlayListNode* songCurrentLocation = start;
+        if (songCurrentLocation->song->title == title) ///checks the start/first song's title.
+            return songCurrentLocation;
+        
+        while (songCurrentLocation->next != nullptr)
+        {
+            songCurrentLocation = songCurrentLocation->next; ///this with the while loop makes the linker crawl through the playlist, our "counter++".
+            if (songCurrentLocation->song->title == title)
+            {
+                return songCurrentLocation;
+                break;
+            }
+        }
     return nullptr;
 }
 
-int PlayList::songPosition(std::string title)
+int PlayList::songPosition(std::string title) ///return the position of the song in the playlist.
 {
-    PlayListNode* current_node = start;
-    int current_position = 0;
+    PlayListNode* currentSong = start;
+    int current_position = 0; ///counter needed to locate index of specific song.
     
-    if (current_node->song->title == title)
-    {
-        return current_position;
-    }
+        if (currentSong->song->title == title)
+            return current_position;
+        
     current_position++;
     
-    while ( current_node->next != nullptr )
-    {
-        current_node = current_node->next;
-        if (current_node->song->title == title)
+        while (currentSong->next != nullptr)
         {
-            return current_position;
+            currentSong = currentSong->next; ///our node crawling "counter++".
+            
+                if (currentSong->song->title == title)
+                    return current_position;
+                
+            current_position++; ///incerement position if title not found
         }
-        current_position++;
-    }
-    return -1;
+    return -1; ///if not found.
 }
 
-PlayListNode* PlayList::getStart() /// return Pointer to the first node in the list
+PlayListNode* PlayList::getStart() ///return pointer to the first node in the list.
 {
     return start;
 }
 
-int PlayList::getTotalPlayTime() /// Returns the total playtime of each song in the playlist (assuming each song's playtime is positive)
+int PlayList::getTotalPlayTime() ///return total playtime of each song in the playlist, assuming each song's playtime is positive.
 {
     int total_playtime = 0;
-    PlayListNode* currentNode = start;
+    PlayListNode* currentSong = start;
     
-    while (currentNode != nullptr) {
-        total_playtime = total_playtime + currentNode->song->durationInSeconds;
-        currentNode = currentNode->next;
-    }
+        while (currentSong != nullptr) ///traverses entire linkedlist and adds time together of each song in the playlist.
+        {
+            total_playtime = total_playtime + currentSong->song->durationInSeconds;
+            currentSong = currentSong->next; ///our handy-dandy node crawling "counter++".
+        }
     return total_playtime;
 }
 
 PlayList::~PlayList() /// Deconstructor
 {
-    PlayListNode* current_node = start;
-    PlayListNode* next_node = nullptr;
-    while (current_node != nullptr)
-    {
-        next_node = current_node->next;
-        delete current_node;
-        current_node = next_node;
-    }
+    PlayListNode* currentSong = start;
+    PlayListNode* nextSong = nullptr;
+    
+        while (currentSong != nullptr)
+        {
+            nextSong = currentSong->next;
+            delete currentSong;
+            currentSong = nextSong;
+        }
 }
 
-void display(PlayListNode* start) ///custom function
+void display(PlayListNode* start) ///display func to print out our playlist.
 {
     while (start != nullptr)
     {
-        std::cout << start->song << " ";
+        std::cout << start->song << std::endl;
         start = start->next;
     }
 }

@@ -8,35 +8,45 @@ Description  : Header file for the Playlist class
 
 #include <string>
 
-struct Song{ ///initialization
+struct Song{
 
-    Song(){
+    Song() ///Default Constructor - initialization of a song
+    {
         title = "";
         durationInSeconds = 0;
     };
 
-    Song(std::string assignedTitle){
+    Song(std::string assignedTitle) ///Parameterized std::string Constructor
+    {
         title = assignedTitle;
         durationInSeconds = 0;
     };
 
-    Song(std::string assignedTitle,int songDuration){ ///when this parameterized constructor is called when creating an object, both public data members will be updated
+    Song(std::string assignedTitle,int songDuration) ///Parameterized std::string and int Constructor
+    {
         title = assignedTitle;
         durationInSeconds = songDuration;
-    };
+    }; ///when this parameterized constructor is called when creating an object, both public data members will be updated
 
     std::string title;
     int durationInSeconds;
 };
 
-struct PlayListNode{ //Class "Node"
-    //O <- Node,Circle, Part of Linked List, it contains a song, and a pointer to another circle
-    Song* song; //Song data, from our struct
-    PlayListNode* next = nullptr; //playlist node pointer, pointing somewhere
+struct PlayListNode  ///initialization of a node
+{                    /// O  <----Node/Circle, Part of Linked List, it contains a song, and a pointer to another node/circle
+    
+    Song* song; ///Song data, from our struct, always dereference the passed in song to this data member. new_node->song = song;
+    PlayListNode* next = nullptr; ///playlist node pointer
 };
 
-class PlayList{ //our linkedlist, the combination of circles
-    //O->O->O->O     <---- This is the linked list
+class PlayList  ///our linkedlist; the linking of the nodes/circles
+{               ///O->O->O->O     <----This is the linked list
+    
+    private:
+        PlayListNode* start = nullptr; //pointer to the starting point.
+        PlayListNode* end = nullptr; //pointer to the end point.
+        int size = 0;
+
     public:
 
         /**
@@ -98,14 +108,13 @@ class PlayList{ //our linkedlist, the combination of circles
         * @ return None
         */
         ~PlayList();
+    
+        /**
+         * Display playlist
+         * @ param  None
+         * @ return None
+         */
         
         void display(PlayListNode* start);
-    
-    private:
-        PlayListNode* start = nullptr; //pointer to the starting point.
-        PlayListNode* end = nullptr;
-        int size = 0; //return size of the list
-        std::string song_title = "";
-
 };
 #endif
