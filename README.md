@@ -7,11 +7,11 @@
 The goal for this project is to build a Playlist using a linkedlist.
 
 You are given:
-* *playlist.cpp* 
+* *playlist.cpp* <br>
 Implementation file for the playlist class
-* *playlist.h* 
+* *playlist.h* <br>
 Header file for the playlist class
-* *main.cpp* 
+* *main.cpp* <br>
 A main file that you should compile to test your playlist class
 
 All required functions for this project can be found in playlist.h and the implementation skeletons can be found in playlist.h
